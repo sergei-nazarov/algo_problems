@@ -1,4 +1,4 @@
-package labirint;
+package generic_search.labirint;
 
 public class MazeLocation {
     public final int row;

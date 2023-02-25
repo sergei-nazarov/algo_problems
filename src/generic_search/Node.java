@@ -1,4 +1,4 @@
-package labirint;
+package generic_search;
 
 public class Node<T> implements Comparable<Node<T>> {
 

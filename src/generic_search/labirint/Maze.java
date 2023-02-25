@@ -1,12 +1,10 @@
-package labirint;
+package generic_search.labirint;
+
+import generic_search.Node;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.ToDoubleBiFunction;
-import java.util.function.ToDoubleFunction;
 
-import static labirint.GenericSearch.*;
+import static generic_search.GenericSearch.*;
 
 public class Maze {
     final int rows, columns;

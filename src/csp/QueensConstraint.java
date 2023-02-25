@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class QuuensConstraint extends Constraint<Integer, Integer> {
+public class QueensConstraint extends Constraint<Integer, Integer> {
 
-    public QuuensConstraint(List<Integer> variables) {
+    public QueensConstraint(List<Integer> variables) {
         super(variables);
     }
 
@@ -17,7 +17,7 @@ public class QuuensConstraint extends Constraint<Integer, Integer> {
             for (Integer variable2 : assignment.keySet()) {
                 if (Objects.equals(variable1, variable2)) {
                     continue;
-                } else if (assignment.get(variable1) == assignment.get(variable2)) {
+                } else if (Objects.equals(assignment.get(variable1), assignment.get(variable2))) {
                     return false;
                 } else if (Math.abs(assignment.get(variable1) - assignment.get(variable2)) == Math.abs(variable1 - variable2)) {
                     return false;
@@ -35,7 +35,7 @@ public class QuuensConstraint extends Constraint<Integer, Integer> {
             rows.put(colum, List.of(1, 2, 3, 4, 5, 6, 7, 8));
         }
         CSP<Integer, Integer> csp = new CSP<>(columns, rows);
-        csp.addConstraint(new QuuensConstraint(List.of(1, 2, 3, 4, 5, 6, 7, 8)));
+        csp.addConstraint(new QueensConstraint(List.of(1, 2, 3, 4, 5, 6, 7, 8)));
 
         Map<Integer, Integer> solution = csp.backtrackingSearch();
         if (solution == null) {

@@ -1,7 +1,7 @@
 package graph;
 
-import labirint.GenericSearch;
-import labirint.Node;
+import generic_search.GenericSearch;
+import generic_search.Node;
 
 import java.util.List;
 

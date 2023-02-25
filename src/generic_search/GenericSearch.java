@@ -1,4 +1,4 @@
-package labirint;
+package generic_search;
 
 import java.util.*;
 import java.util.function.Function;

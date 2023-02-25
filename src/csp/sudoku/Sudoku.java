@@ -53,11 +53,13 @@ public class Sudoku {
         }
 
         constraints.forEach(csp::addConstraint);
+        printGrid(startValues);
         Map<Point, Integer> solution = csp.backtrackingSearch(startValues);
+        System.out.println();
         if (solution == null) {
             System.out.println("No solution");
         } else {
-            printSolution(solution);
+            printGrid(solution);
         }
     }
 
@@ -65,13 +67,13 @@ public class Sudoku {
         solve(new HashMap<>());
     }
 
-    private void printSolution(Map<Point, Integer> solution) {
+    private void printGrid(Map<Point, Integer> solution) {
         for (Point point : solution.keySet()) {
             grid[point.row][point.column] = solution.get(point);
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < rows; i++) {
-            sb.append(Arrays.toString(grid[i])).append(System.lineSeparator());
+            sb.append(Arrays.toString(grid[i]).replace('0','-')).append(System.lineSeparator());
         }
         System.out.println(sb);
     }
