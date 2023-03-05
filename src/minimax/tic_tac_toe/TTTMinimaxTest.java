@@ -1,4 +1,6 @@
-package minimax;
+package minimax.tic_tac_toe;
+
+import minimax.Mimimax;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -60,6 +62,18 @@ public class TTTMinimaxTest {
                 TTTPiece.O, TTTPiece.X, TTTPiece.E
         };
         TTTBoard testBoard4 = new TTTBoard(toWinVeryHardPosition, TTTPiece.X);
+        Integer answer4 = Mimimax.findBestMove(testBoard4, 8);
+        assertEquality(answer4, 4);
+    }
+
+    @UnitTest(name = "Suicide position")
+    public void suicidePosition() {
+        TTTPiece[] toWinVeryHardPosition = new TTTPiece[]{
+                TTTPiece.E, TTTPiece.X, TTTPiece.E,
+                TTTPiece.E, TTTPiece.E, TTTPiece.X,
+                TTTPiece.O, TTTPiece.O, TTTPiece.X
+        };
+        TTTBoard testBoard4 = new TTTBoard(toWinVeryHardPosition, TTTPiece.O);
         Integer answer4 = Mimimax.findBestMove(testBoard4, 8);
         assertEquality(answer4, 4);
     }

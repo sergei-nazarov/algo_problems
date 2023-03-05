@@ -1,14 +1,15 @@
-package minimax;
+package minimax.connect_four;
 
-public enum TTTPiece implements Piece{
-    X,O,E // E - empty
-    ;
+import minimax.Piece;
+
+public enum C4Piece implements Piece {
+    R,B,E; // E - empty
 
     @Override
-    public TTTPiece opposite() {
+    public C4Piece opposite() {
         return switch (this){
-            case X -> TTTPiece.O;
-            case O -> TTTPiece.X;
+            case R -> C4Piece.B;
+            case B -> C4Piece.R;
             default -> throw new IllegalStateException("Unexpected value: " + this);
         };
     }
@@ -16,8 +17,8 @@ public enum TTTPiece implements Piece{
     @Override
     public String toString() {
         return switch (this){
-            case X -> "X";
-            case O -> "O";
+            case R -> "O";
+            case B -> "X";
             default -> " ";
         };
     }

@@ -1,4 +1,6 @@
-package minimax;
+package minimax.tic_tac_toe;
+
+import minimax.Mimimax;
 
 import java.util.Scanner;
 

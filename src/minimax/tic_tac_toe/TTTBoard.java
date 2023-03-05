@@ -1,4 +1,7 @@
-package minimax;
+package minimax.tic_tac_toe;
+
+import minimax.Board;
+import minimax.Piece;
 
 import java.util.Arrays;
 import java.util.List;
