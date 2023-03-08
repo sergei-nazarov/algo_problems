@@ -32,8 +32,9 @@ public class ConnectFour {
                 break;
             }
             long currentTime = System.currentTimeMillis();
-            Integer computerMove = Mimimax.findBestMove(board, 3);
+            Integer computerMove = Mimimax.findBestMove(board, 7, true);
             System.out.println("Computer move is " + computerMove + " time for calculate: " + (System.currentTimeMillis() - currentTime));
+
             board = board.move(computerMove);
             System.out.println(board);
             if (board.isWin()) {
