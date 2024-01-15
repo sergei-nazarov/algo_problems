@@ -55,8 +55,7 @@ public class GenericSearch {
                 }
                 explored.add(child);
                 frontier.push(new Node<>(child, currentNode));
-            }///
-
+            }
         }
         System.out.println("Количество итераций: " + counter);
         return null;
