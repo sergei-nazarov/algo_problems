@@ -4,7 +4,7 @@ public class Node<T> implements Comparable<Node<T>> {
 
     final T state;
     Node<T> parent;
-    double cost;
+    double cost;// тест 1
     double heuristic;
 
     public Node(T state, Node<T> paremt) {
