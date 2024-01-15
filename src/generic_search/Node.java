@@ -9,7 +9,7 @@ public class Node<T> implements Comparable<Node<T>> {
 
     public Node(T state, Node<T> paremt) {
         this.state = state;
-        this.parent = paremt;
+        this.parent = paremt;//
     }
 
     public Node(T state, Node<T> parent, double cost, double heuristic) {
