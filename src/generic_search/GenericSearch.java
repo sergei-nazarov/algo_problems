@@ -48,7 +48,7 @@ public class GenericSearch {
             if (goalTest.test(currentState)) {
                 System.out.println("Количество итераций: " + counter);
                 return currentNode;
-            }//
+            }////
             for (T child : successors.apply(currentState)) {
                 if (explored.contains(child)) {
                     continue;
