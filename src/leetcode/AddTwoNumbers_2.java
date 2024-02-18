@@ -58,10 +58,7 @@ public class AddTwoNumbers_2 {
 
         @Override
         public String toString() {
-            return "ListNode{" +
-                    "val=" + val +
-                    ", next=" + next +
-                    '}';
+            return val + (next == null ? "" : "," + next);
         }
     }
 

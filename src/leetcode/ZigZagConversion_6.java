@@ -10,20 +10,30 @@ public class ZigZagConversion_6 {
         if (numRows == 1) {
             return s;
         }
-        List<List<Character>> rows = new ArrayList<>();
+        List<StringBuilder> rows = new ArrayList<>();
         for (int i = 0; i < numRows; i++) {
-            rows.add(new ArrayList<>());
+            rows.add(new StringBuilder());
         }
-        boolean isDown = false;
-        int realNumber = 0;
+
         for (int i = 0; i < s.length(); i++) {
-            rows.get(realNumber).add(s.charAt(i));
-            if (realNumber == 0 || realNumber == numRows - 1) {
-                isDown = !isDown;
-            }
-            realNumber = isDown ? realNumber + 1 : realNumber - 1;
+            rows.get(findRow(numRows, i)).append(s.charAt(i));
         }
-        return rows.stream().flatMap(Collection::stream).map(Object::toString).collect(Collectors.joining());
+        StringBuilder resultString = new StringBuilder();
+        rows.forEach(resultString::append);
+
+        return resultString.toString();
+    }
+
+    public int findRow(int numRows, int number) {
+        int nextPeek = numRows * 2 - 2;
+        int relative = number % nextPeek;
+        int result;
+        if (relative < numRows) {
+            result = relative;
+        } else {
+            result = (2 * (numRows - 1)) - relative;
+        }
+        return result;
     }
 
     //3 - 0 4 8 12
@@ -31,7 +41,11 @@ public class ZigZagConversion_6 {
     public static void main(String[] args) {
 //    PAHNAPLSIIGYIR
         System.out.println(new ZigZagConversion_6().convert("PAYPALISHIRING", 3));
+        System.out.println(new ZigZagConversion_6().convert("PAYPALISHIRING", 4));
+        System.out.println(new ZigZagConversion_6().convert("PAYPALISHIRING", 5));
+
         System.out.println(new ZigZagConversion_6().convert("AB", 1));
+
 
     }
 }
