@@ -19,8 +19,6 @@ public class PowerOfTwo_231 {
         evoke(5);
         evoke(32);
         evoke(33);
-
-
     }
 
     static void evoke(int num) {
