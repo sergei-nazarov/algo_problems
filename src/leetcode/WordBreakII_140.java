@@ -1,40 +1,39 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordBreakII_140 {
 
     public List<String> wordBreak(String s, List<String> wordDict) {
-        HashSet<String> dict = new HashSet<>(wordDict);
-        ArrayList<String> result = new ArrayList<>();
-        helper(s, dict, 0, result, new StringBuilder());
-        return result;
+        return dfs(s, new HashSet<>(wordDict), new HashMap<>());
     }
 
-    public void helper(String s, Set<String> dict, int pos, List<String> result, StringBuilder sb) {
-        if (s.length() == pos) {
-            result.add(sb.deleteCharAt(sb.length() - 1).toString());
-            sb.append(" ");
-            return;
+    public List<String> dfs(String s, Set<String> dict, HashMap<String, List<String>> cache) {
+        if (s.isEmpty()) {
+            return List.of("");
         }
-        StringBuilder currentWord = new StringBuilder();
-        for (int i = pos; i < s.length(); i++) {
-            currentWord.append(s.charAt(i));
-            if (dict.contains(currentWord.toString())) {
-                sb.append(currentWord).append(" ");
-                helper(s, dict, i + 1, result, sb);
-                sb.delete(sb.length() - currentWord.length() - 1, sb.length());
+
+        if (cache.containsKey(s)) {
+            return cache.get(s);
+        }
+        List<String> result = new ArrayList<>();
+        for (int i = 1; i <= s.length(); i++) {
+            String word = s.substring(0, i);
+            if (dict.contains(word)) {
+                for (String ss : dfs(s.substring(i), dict, cache)) {
+                    String res = STR."\{word}\{ss.isEmpty() ? "" : " "}\{ss}";
+                    result.add(res);
+                }
             }
         }
+        cache.put(s, result);
+        return result;
     }
 
 
     public static void main(String[] args) {
         System.out.println(new WordBreakII_140().wordBreak("catsanddog", List.of("cat", "cats", "and", "sand", "dog")));
-        System.out.println(new WordBreakII_140().wordBreak("pineapplepenapple", List.of("apple","pen","applepen","pine","pineapple")));
+        System.out.println(new WordBreakII_140().wordBreak("pineapplepenapple", List.of("apple", "pen", "applepen", "pine", "pineapple")));
 
 
     }
