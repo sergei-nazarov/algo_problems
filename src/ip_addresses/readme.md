@@ -7,7 +7,7 @@ To reduce memory consumption, instead of storing integers, we can store booleans
 
 One challenge is that the size of an array is limited to `2^31` elements.
 However, by using two arrays, we can accommodate the entire `2^32` addresses and reduce the required memory to `2 * 2^31` bytes (4 GB).
-The division into two bit sets is based on the sign bit of the number: 
+The division into two arrays is based on the sign bit of the number: 
 - if the sign bit is 0, the value is stored in the first bit set
 - if the sign bit is 1, it is stored in the second bit set.
 
